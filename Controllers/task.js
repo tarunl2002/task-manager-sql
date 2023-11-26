@@ -57,3 +57,12 @@ exports.updateTask = (req, res) => {
         return res.status(200).json(result);
     })
 }
+
+exports.deleteSingleTask = (req,res) => {
+    const q=`DELETE FROM tasks WHERE id=${req.params.id}`;
+
+    db.query(q, (err,result) => {
+        if(err) return res.json(err);
+        return res.status(201).json({data : "task deleted"})
+    })
+}
